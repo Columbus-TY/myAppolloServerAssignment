@@ -1,56 +1,56 @@
 import mongoose from "mongoose";
-import { commentSchema } from "./comment-model";
+import { schemaComment } from "./model_comment";
 const { Schema, model } = mongoose;
 
-export const postSchema = new Schema({
+export const schemaPost = new Schema({
 
-  //title of post
+  //defines the title of post
   title: {
     type: String,
     required: true,
   },
 
-  //details of blog
+  //defines the details of the blog
   details: {
     type: String,
   },
 
-  //date
+  //defines the date
   date: {
     type: Date,
     default: Date.now(),
   },
 
-  //author of post
+  //defines the author of post
   author: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "author",
   },
 
-  //banner for the post
+  //defines the banner for the post
   banner: {
     type: String,
   },
 
   //displays all comments on post
   comments: {
-    type: [commentSchema],
+    type: [schemaComment],
   },
 
-  //likes for a specific post
+  //displays the number of likes for a specific post
   likes: {
     type: Number,
     default: 0,
   },
 
-  //unlikes pertaining to post
+  //shows the number of unlikes pertaining to post
   Unlikes: {
     type: Number,
     default: 0,
   },
 });
 
-const postModel = model("post", postSchema);
+const modelPost = model("post", schemaPost);
 
-export default postModel;
+export default modelPost;

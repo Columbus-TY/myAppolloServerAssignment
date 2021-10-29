@@ -1,20 +1,20 @@
 import mongoose from "mongoose";
-import { postSchema } from "./post-model";
+import { postSchema } from "./model_post";
 const { Schema, model } = mongoose;
 
-const authorSchema = new Schema({
-  //name of author
+const schemaAuthor = new Schema({
+  //defines the name of author
   name: {
     type: String,
     required: true,
   },
 
-  //details of the post
+  //defines the details of the post
   posts: {
     type: [postSchema],
   },
 });
 
-const authorModel = model("author", authorSchema);
+const modelAuthor = model("author", schemaAuthor);
 
-export default authorModel;
+export default modelAuthor;
